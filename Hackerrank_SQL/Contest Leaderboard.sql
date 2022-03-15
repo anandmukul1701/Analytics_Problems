@@ -20,10 +20,10 @@ from(
         group by 1,2
         ) I
     group by 1
-    --having score_sum > 0
     ) A
 left join
     hackers h
 on A.hacker_id = h.hacker_id
+where score_sum > 0
 order by score_sum desc, hacker_id
 ;
