@@ -21,3 +21,27 @@ SELECT
     WHEN A <> B and B <> C THEN 'Scalene'
   END tuple
 FROM TRIANGLES;
+
+
+
+select
+    emp_id
+    ,min(date) as first_booking
+    ,max(date) as last_booking
+    ,count(distinct booking_id) as num_booking
+    ,sum(amount) as booking_amount
+from 
+    booking
+group by 1
+;
+
+
+
+select
+    destination
+    ,count(distinct case when type = 'flight' then booking_id end) as flight_booking
+    ,count(distinct case when type = 'hotel' then booking_id end) as hotel_booking
+from 
+    booking  
+group by 1
+;
